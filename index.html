@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Harga Bibit &amp; Input Nursery — Cikopo</title>
+<style>
+:root{--bg:#f5f7f3;--card:#fff;--tx:#1c2a1c;--mu:#5c6f5c;--ac:#2e7d32;--ln:#dde5d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+.w{max-width:1020px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:30px 0 10px}
+.sub{color:var(--mu);margin:0 0 18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px 16px}
+.card b{font-size:22px;display:block}.card span{color:var(--mu);font-size:13px}
+.tbl{background:var(--card);border:1px solid var(--ln);border-radius:14px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--ln);vertical-align:top;font-size:14px}
+th{background:#eef3ea;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:#3c513c;white-space:nowrap}
+td.h{font-weight:700;white-space:nowrap}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.b-riset{background:#e3f0e4;color:#2e7d32}.b-quotation{background:#e2ecfb;color:#2456a6}
+.b-estimasi{background:#fdf0d7;color:#96660a}.b-asumsi{background:#efe6f7;color:#6a3fa0}
+.note{background:#fff8e6;border:1px solid #ecd9a0;border-radius:12px;padding:12px 16px;font-size:13.5px;margin-top:26px}
+small{color:var(--mu)}
+</style></head><body><div class="w">
+<h1>Data Harga Bibit &amp; Input Nursery</h1>
+<p class="sub">Dataset terbuka untuk costing Nursery Durian Cikopo. Data mentahnya ada di folder <b>data/</b> dalam format CSV. Terakhir diperbarui: Oktober 2026.</p>
+<div class="cards">
+<div class="card"><b id="nBibit">-</b><span>baris data harga bibit</span></div>
+<div class="card"><b id="nInput">-</b><span>baris data harga input</span></div>
+<div class="card"><b>Okt 2026</b><span>periode riset terakhir</span></div>
+<div class="card"><b>3</b><span>quotation vendor tertulis masuk data</span></div>
+</div>
+<h2>Harga Bibit Durian</h2><div class="tbl"><table id="tBibit"></table></div>
+<h2>Harga Input Nursery</h2><div class="tbl"><table id="tInput"></table></div>
+<div class="note"><b>Catatan kejujuran data:</b> baris berlabel <b>Riset pasar/marketplace</b> adalah harga listing pada Oktober 2026, bukan penawaran resmi dan bisa berubah atau hilang. Baris <b>Estimasi pembanding</b> adalah perkiraan dari kelas produk yang sama. Baris <b>Asumsi RAB/model</b> adalah angka perencanaan internal. Hanya baris <b>Quotation vendor</b> yang berasal dari surat penawaran tertulis. Selalu minta quotation terbaru sebelum memakai angka ini untuk keputusan pembelian.</div>
+<p><small>Sumber: riset pasar Oktober 2026 untuk proyek Nursery Durian Cikopo dan dokumen penawaran vendor terkait.</small></p>
+</div>
+<script>
+const BIBIT = [{"tanggal": "2026-10-26", "item": "Bibit durian Black Thorn", "jenis": "Sambung pucuk (grafted)", "min": 75000, "max": 340000, "satuan": "per bibit", "jenis_harga": "Riset pasar", "sumber": "Riset pasar dalam dokumen proyek Durian Farm Cikopo (Okt 2026)", "catatan": "Bibit sambung pucuk siap pasar dalam 5-8 bulan (Kementan)"}, {"tanggal": "2026-10-26", "item": "Bibit durian lokal", "jenis": "Dari biji (seedling)", "min": 10000, "max": 40000, "satuan": "per bibit", "jenis_harga": "Riset pasar", "sumber": "Riset pasar dalam dokumen proyek Durian Farm Cikopo (Okt 2026)", "catatan": "Dari biji, berbuah 10-15 tahun"}, {"tanggal": "2026-10-24", "item": "Bibit durian lokal (asumsi RAB kebun)", "jenis": "Campuran tanam kebun", "min": 100000, "max": 100000, "satuan": "per bibit", "jenis_harga": "Asumsi RAB", "sumber": "RAB revisi5 Kebun Durian Cikopo: Rp23.000.000 untuk 230 pohon", "catatan": "Harga perencanaan di RAB, bukan harga pasar"}, {"tanggal": "2026-10-07", "item": "Bibit durian lokal (asumsi model HPP nursery)", "jenis": "Dari biji (seedling)", "min": 100000, "max": 100000, "satuan": "per bibit", "jenis_harga": "Asumsi model", "sumber": "Model HPP nursery Cikopo (harga jual ilustratif)", "catatan": "Di atas kisaran umum pasar (10-40 rb), perlu validasi survei"}, {"tanggal": "2026-10-07", "item": "Bibit durian Black Thorn (asumsi model HPP nursery)", "jenis": "Sambung pucuk (grafted)", "min": 275000, "max": 275000, "satuan": "per bibit", "jenis_harga": "Asumsi model", "sumber": "Model HPP nursery Cikopo (harga jual ilustratif)", "catatan": "Di kisaran atas pasar, perlu validasi survei"}];
+const INPUT = [{"tanggal": "2026-10-23", "item": "Kohe kambing kasar/basah", "spek": "Kemasan karung 25 kg", "min": 22000, "max": 22000, "satuan": "per karung 25 kg", "jenis_harga": "Riset marketplace", "sumber": "Listing Tokopedia/Shopee, Okt 2026", "catatan": "Harga mulai dari; mutu basah/kasar"}, {"tanggal": "2026-10-23", "item": "Kohe kambing fermentasi", "spek": "Kemasan karung 25 kg", "min": 28900, "max": 57000, "satuan": "per karung 25 kg", "jenis_harga": "Riset marketplace", "sumber": "Listing Tokopedia/Shopee, Okt 2026", "catatan": "Siap pakai untuk media tanam"}, {"tanggal": "2026-10-23", "item": "Dolomit", "spek": "Kemasan karung 50 kg", "min": 45000, "max": 120000, "satuan": "per karung 50 kg", "jenis_harga": "Riset marketplace", "sumber": "Listing marketplace, Okt 2026", "catatan": "Paling umum ditemukan Rp79.900-90.000"}, {"tanggal": "2026-10-23", "item": "NPK 15-15-15 +TE (DGW Compaction)", "spek": "Kemasan eceran 1 kg", "min": 23500, "max": 23500, "satuan": "per kg", "jenis_harga": "Riset marketplace", "sumber": "Listing Tokopedia, data 22 Okt 2026", "catatan": "Satu-satunya harga kemasan yang terverifikasi publik"}, {"tanggal": "2026-10-23", "item": "NPK 15-15-15 +TE (DGW Compaction)", "spek": "Kemasan karung 50 kg", "min": 400000, "max": 500000, "satuan": "per karung 50 kg", "jenis_harga": "Estimasi pembanding", "sumber": "Perkiraan dari kelas NPK compaction 50 kg, Okt 2026", "catatan": "ESTIMASI, bukan quotation. Harga resmi hanya lewat distributor DGW (BST Region Jawa)"}, {"tanggal": "2026-10-23", "item": "NPK compound premium (pembanding, mis. YaraMila)", "spek": "Kemasan karung 50 kg", "min": 900000, "max": 1600000, "satuan": "per karung 50 kg", "jenis_harga": "Riset marketplace", "sumber": "Listing marketplace, Okt 2026", "catatan": "Hanya pembanding kelas premium"}, {"tanggal": "2026-10-27", "item": "Pipa HDPE 2 inch", "spek": "SNI SDR 17 PN 10", "min": 27291, "max": 27291, "satuan": "per meter", "jenis_harga": "Quotation vendor", "sumber": "PT Solusi Inti Bersama QT SIB-QUOT/26/X/D036, 27 Okt 2026", "catatan": "Belum termasuk PPN dan ongkir (loco pabrik Sidoarjo)"}, {"tanggal": "2026-10-27", "item": "Pipa HDPE 1 inch", "spek": "SNI SDR 17 PN 10", "min": 8194, "max": 8194, "satuan": "per meter", "jenis_harga": "Quotation vendor", "sumber": "PT Solusi Inti Bersama QT SIB-QUOT/26/X/D036, 27 Okt 2026", "catatan": "Belum termasuk PPN dan ongkir (loco pabrik Sidoarjo)"}, {"tanggal": "2026-10-27", "item": "Pipa HDPE 2 inch", "spek": "Per roll 80 m", "min": 3880000, "max": 3880000, "satuan": "per roll 80 m", "jenis_harga": "Quotation vendor", "sumber": "CV Panca Wira Wisesa QA.0003.PWW-ADK.X.2026, 27 Okt 2026", "catatan": "Setara Rp48.500/m. Franco Purwakarta, di luar PPN"}, {"tanggal": "2026-10-27", "item": "Pipa HDPE 1 inch", "spek": "Per roll 100 m", "min": 1240000, "max": 1240000, "satuan": "per roll 100 m", "jenis_harga": "Quotation vendor", "sumber": "CV Panca Wira Wisesa QA.0003.PWW-ADK.X.2026, 27 Okt 2026", "catatan": "Setara Rp12.400/m. Franco Purwakarta, di luar PPN"}];
+const rp = n => 'Rp' + n.toLocaleString('id-ID');
+const rentang = r => r.min === r.max ? rp(r.min) : rp(r.min) + ' – ' + rp(r.max);
+const badgeCls = j => j.startsWith('Quotation') ? 'b-quotation' : j.startsWith('Estimasi') ? 'b-estimasi' : j.startsWith('Asumsi') ? 'b-asumsi' : 'b-riset';
+function render(id, rows, col2){
+  const t = document.getElementById(id);
+  t.innerHTML = '<tr><th>Item</th><th>' + col2 + '</th><th>Harga</th><th>Satuan</th><th>Jenis Harga</th><th>Sumber</th><th>Catatan</th></tr>' +
+    rows.map(r => '<tr><td class="h">' + r.item + '</td><td>' + (r.jenis || r.spek) + '</td><td class="h">' + rentang(r) +
+    '</td><td>' + r.satuan + '</td><td><span class="badge ' + badgeCls(r.jenis_harga) + '">' + r.jenis_harga +
+    '</span></td><td>' + r.sumber + '</td><td>' + r.catatan + '</td></tr>').join('');
+}
+render('tBibit', BIBIT, 'Jenis');
+render('tInput', INPUT, 'Spesifikasi');
+document.getElementById('nBibit').textContent = BIBIT.length;
+document.getElementById('nInput').textContent = INPUT.length;
+</script></body></html>

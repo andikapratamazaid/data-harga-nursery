@@ -1,0 +1,6 @@
+tanggal,item,jenis,min,max,satuan,jenis_harga,sumber,catatan
+2026-10-26,Bibit durian Black Thorn,Sambung pucuk (grafted),75000,340000,per bibit,Riset pasar,Riset pasar dalam dokumen proyek Durian Farm Cikopo (Okt 2026),Bibit sambung pucuk siap pasar dalam 5-8 bulan (Kementan)
+2026-10-26,Bibit durian lokal,Dari biji (seedling),10000,40000,per bibit,Riset pasar,Riset pasar dalam dokumen proyek Durian Farm Cikopo (Okt 2026),"Dari biji, berbuah 10-15 tahun"
+2026-10-24,Bibit durian lokal (asumsi RAB kebun),Campuran tanam kebun,100000,100000,per bibit,Asumsi RAB,RAB revisi5 Kebun Durian Cikopo: Rp23.000.000 untuk 230 pohon,"Harga perencanaan di RAB, bukan harga pasar"
+2026-10-07,Bibit durian lokal (asumsi model HPP nursery),Dari biji (seedling),100000,100000,per bibit,Asumsi model,Model HPP nursery Cikopo (harga jual ilustratif),"Di atas kisaran umum pasar (10-40 rb), perlu validasi survei"
+2026-10-07,Bibit durian Black Thorn (asumsi model HPP nursery),Sambung pucuk (grafted),275000,275000,per bibit,Asumsi model,Model HPP nursery Cikopo (harga jual ilustratif),"Di kisaran atas pasar, perlu validasi survei"
